@@ -67,16 +67,16 @@ El muestreo es una herramienta esencial para el investigador, ya que en la mayor
 
 Los conceptos de parámetro y estadístico son casi equivalentes, diferenciándose únicamente en el conjunto de datos del cual se obtienen. Un parámetro se calcula a partir de los datos de una población y representa una característica inherente a ella, mientras que un estadístico se calcula a partir de los datos de una muestra y sirve como una estimación o aproximación del parámetro poblacional.
 
-**Ejemplo.** El promedio muestral y el promedio poblacional de una población finita son ejemplos clásicos de un estadístico y un parámetro, respectivamente. Suponga que \( X \) representa una característica medible de interés y que \( x_i \) denota el valor de \( X \) asociado al \( i \)-ésimo individuo. El **promedio muestral** de \( X \), denotado con \( \bar{x} \), se define como:
-\[
+**Ejemplo.** El promedio muestral y el promedio poblacional de una población finita son ejemplos clásicos de un estadístico y un parámetro, respectivamente. Suponga que $X$ representa una característica medible de interés y que $x_i$ denota el valor de $X$ asociado al $i$-ésimo individuo. El **promedio muestral** de $X$, denotado con $\bar{x}$, se define como:
+$$
 \bar{x} = \frac{x_1 + x_2 + \ldots + x_n}{n} = \frac{1}{n} \sum_{i=1}^{n} x_i,
-\]
-donde \( n \) es el tamaño de la muestra. 
-De manera similar, el \textbf{promedio poblacional} de \( X \), denotado con \( \mu \), se define como:
-\[
+$$
+donde $n$ es el tamaño de la muestra. 
+De manera similar, el **promedio poblacional** de $X$, denotado con $\mu$, se define como:
+$$
 \mu = \frac{x_1 + x_2 + \ldots + x_N}{N} = \frac{1}{N} \sum_{i=1}^{N} x_i,
-\]
-donde \( N \) representa el tamaño total de la población. $\square$
+$$
+donde $N$ representa el tamaño total de la población. $\square$
 
 # Variables
 
@@ -94,7 +94,6 @@ Las **variables cuantitativas** son aquellas que se registran o expresan en form
 - **Variables continuas**: Son aquellas que siempre admiten valores intermedios entre dos valores cualesquiera de la variable. Por ejemplo, el salario de un empleado medido en millones de pesos es una variable cuantitativa continua, ya que puede tomar cualquier valor dentro de un rango dado.
 
 Esta clasificación permite distinguir entre variables que representan conteos y aquellas que representan mediciones en una escala continua.
-
 
 En algunas ocasiones, por simplicidad o conveniencia, las variables cuantitativas pueden transformarse en variables cualitativas. Por ejemplo, las calificaciones de los estudiantes, originalmente medidas en una escala numérica de 0 a 5, pueden **categorizase** y expresarse como una variable cualitativa. Para ello, el investigador puede agrupar las calificaciones dentro de rangos específicos y asignarles etiquetas descriptivas, como "deficiente", "regular", "bueno" y "excelente". Este enfoque facilita el análisis e interpretación de los datos, especialmente cuando el objetivo es comparar o comunicar resultados de manera más intuitiva.
 
@@ -115,7 +114,7 @@ La medición es un componente fundamental en estadística, ya que permite obtene
 
 **Definición.** Una **escala de medición** es un esquema estructurado que establece cómo asignar símbolos o números para representar los valores de una variable, permitiendo así describir, clasificar o cuantificar las características de los elementos estudiados de manera sistemática.
 
-La taxonomía más conocida sobre las escalas de medición la presenta [@stevens1951], quien las clasifica en nominales, ordinales, de intervalos y de razón:
+La taxonomía más conocida sobre las escalas de medición la presenta @stevens1951, quien las clasifica en nominales, ordinales, de intervalos y de razón:
 
 - La **escala nominal** clasifica individuos en categorías distintas basadas en cualidades específicas. Los números pueden usarse para identificar categorías, pero no representan magnitudes ni jerarquías. Por ejemplo, asignar 1 al género masculino y 2 al femenino facilita el manejo de datos, pero no implica un valor mayor o menor. En esta escala, los números no se emplean en operaciones aritméticas, ya que su propósito es únicamente identificar. La escala nominal es limitada, ya que permite clasificar pero no medir magnitudes.
 - La **escala ordinal** clasifica las unidades de observación según su posición en relación con un atributo, sin reflejar la distancia entre estas posiciones. Los números asignados solo indican el orden relativo. Por ejemplo, al evaluar tres alternativas para una campaña de mercadeo (A, B y C), una junta directiva puede decidir que A es la mejor y B la peor. Aunque esto ordena las alternativas según su conveniencia, no permite determinar cuánto mejor es A respecto a las otras. En una escala ordinal, las operaciones aritméticas no son válidas, ya que las diferencias entre los elementos no están medidas en unidades absolutas ni comparables.
