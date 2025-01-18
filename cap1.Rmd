@@ -1,0 +1,150 @@
+---
+title: "Elementos generales"
+author:
+  - Juan Sosa
+  - jcsosam@unal.edu.co
+  - https://github.com/jstats1702
+  - 
+date: ""
+output:
+  html_document:
+    highlight: tango
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    keep_md: true
+bibliography: referencias.bib
+csl: apa-5th-edition.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introducción
+
+En las últimas décadas, la estadística ha experimentado un notable desarrollo, consolidándose como una disciplina esencial en múltiples áreas del conocimiento. Su fundamento radica en la búsqueda sistemática del saber, sustentada en procesos de observación, análisis y experimentación en contextos específicos. Este enfoque metódico facilita la formulación de preguntas, la construcción de hipótesis, la deducción de principios y la elaboración de leyes generales. Como una herramienta indispensable en todas las ramas del saber, la estadística se distingue por su capacidad para abordar y gestionar la incertidumbre inherente a diversas actividades y decisiones, ofreciendo métodos y técnicas que permiten emplear los datos de manera rigurosa para diseñar estrategias fundamentadas.
+
+La estadística es una herramienta fundamental para analizar procesos, obtener resultados significativos y tomar decisiones informadas. Su relevancia se manifiesta con mayor claridad en escenarios donde la variabilidad intrínseca de los fenómenos supera las limitaciones de las explicaciones basadas en leyes deterministas tradicionales. Este enfoque pone en evidencia la tensión entre el ideal del determinismo absoluto y la realidad de la incertidumbre inherente a los sistemas complejos, consolidando a la estadística como una disciplina clave para comprender, modelar y gestionar dicha incertidumbre con rigor y eficacia.
+
+# ¿Qué es estadística?
+
+Definir la estadística requiere especificar las técnicas empleadas en los diversos campos donde esta disciplina desempeña un papel esencial. La definición que se presenta a continuación destaca su conexión directa con el método científico, enfatizando cómo la estadística facilita la recolección y el análisis de datos para formular y contrastar hipótesis, generar conocimientos y tomar decisiones fundamentadas en evidencia.
+
+**Definición.** La **estadística** es la ciencia que se encarga del desarrollo y aplicación de métodos y técnicas para el análisis de datos. Su propósito fundamental es apoyar la toma de decisiones racionales en contextos donde predomina la incertidumbre, proporcionando herramientas para comprender los fenómenos de manera fundamentada. $\square$
+
+## Clasificación de la estadística
+
+La estadística se divide en dos ramas principales: la estadística descriptiva, dedicada a resumir, organizar y analizar los datos observados sin extender los resultados más allá del conjunto de datos estudiado, y la estadística inferencial, orientada a extraer conclusiones y realizar generalizaciones sobre una población a partir de una muestra. Estas dos ramas no funcionan de manera aislada; al contrario, se complementan entre sí, proporcionando un enfoque integral para comprender la realidad.
+
+**Definición.** La **estadística descriptiva** se encarga de analizar, organizar y representar un conjunto de datos mediante métodos numéricos y gráficos, con el propósito de resumir y comunicar de manera clara y efectiva la información contenida en ellos. $\square$
+
+La estadística descriptiva expone de forma objetiva una situación, mostrando únicamente lo que los datos reflejan. Su propósito es facilitar la comprensión y el análisis de las observaciones realizadas sobre un fenómeno, ofreciendo una descripción clara, ordenada y precisa de los datos, sin realizar generalizaciones más allá del conjunto de datos analizado.
+
+**Definición.** La **estadística inferencial**, basada en el cálculo de probabilidades, permite realizar estimaciones y predicciones sobre una población a partir del análisis de un subconjunto de datos representativo de la población, conocido como muestra. $\square$
+
+La estadística inferencial se aplica cuando, a partir de los resultados obtenidos de un conjunto de datos específico, se generan conclusiones sobre una población. En otras palabras, las inferencias trascienden los límites del conjunto de datos analizado. Habitualmente, el análisis estadístico inferencial se utiliza para explorar y demostrar relaciones de causa y efecto, así como para probar hipótesis y validar teorías.
+
+# Algunos términos importantes
+
+El objeto de estudio de la estadística son los fenómenos colectivos, caracterizados por el comportamiento de un conjunto de características influenciadas por la **aleatoriedad**. La aleatoriedad se refiere a una propiedad intrínseca de todo proceso cuyo resultado no puede preverse con certeza, ya que depende del azar, lo que imposibilita determinarlo con exactitud antes de que ocurra. A continuación, se describen algunos términos comúnmente utilizados en la investigación de este tipo de fenómenos.
+
+**Definición.** Los **individuos** son las entidades sobre las cuales se realiza la investigación. En este contexto, una **población** se define como el conjunto completo de individuos o mediciones que cumplen con las características específicas establecidas para el estudio. $\square$
+
+Una población, dependiendo de su tamaño, puede clasificarse en dos tipos: finita o infinita. Una **población finita** es aquella cuyo número de elementos es limitado y puede contarse de manera exacta. En contraste, una **población infinita** es aquella que tiene un número ilimitado de elementos o cuyo tamaño es tan grande que, para fines prácticos, se considera infinito.
+
+**Definición.** Se denomina **muestra** a un subconjunto representativo de individuos o mediciones extraído de una población, con el objetivo de analizar sus características y, en muchos casos, realizar inferencias sobre la población completa. La cantidad de individuos de una muestra se simboliza con $n$, mientras que la cantidad de elementos que constituyen una población finita se representa con $N$. $\square$
+
+Las muestras se clasifican en dos tipos principales según su representatividad respecto a la población: probabilísticas y no probabilísticas. Las **muestras no probabilísticas** se distinguen por la selección subjetiva o arbitraria de los individuos, basada en la disponibilidad de los individuos o en el criterio del recolector de los datos. En este enfoque, no todos los miembros de la población tienen una probabilidad conocida de ser seleccionados, lo que puede comprometer la capacidad de generalizar los resultados al conjunto completo de la población.
+
+De otra parte, las **muestras probabilísticas** se fundamentan en la probabilidad que tiene cada elemento de la población de ser seleccionado para formar parte de la muestra. En este tipo de muestreo, los elementos se eligen de manera aleatoria, lo que asegura que todos los integrantes de la población tengan una oportunidad conocida y mayor que cero de ser incluidos. Este enfoque garantiza la representatividad de la muestra en relación con la población de referencia, permitiendo que los resultados obtenidos puedan generalizarse al conjunto completo de la población.
+ 
+El muestreo es una herramienta esencial para el investigador, ya que en la mayoría de los casos, resulta impráctico o inviable medir a todos los individuos de una población, es decir, realizar un **censo**. En estos casos, se selecciona una muestra representativa de la población con el propósito de extraer conclusiones confiables y válidas sobre el colectivo objeto de estudio. El tamaño de la muestra se determina en función del nivel de precisión establecido por el investigador y debe ser lo más grande posible dentro de los límites de los recursos disponibles. En general, un tamaño de muestra mayor incrementa la probabilidad de que esta sea representativa de la población, mejorando así la calidad de las inferencias realizadas.
+
+**Definición.** Un **parámetro** se define como una función que describe una característica medible de una población. De manera análoga, un **estadístico** (observado) es una función que describe una característica medible de una muestra extraída de dicha población. $\square$
+
+Los conceptos de parámetro y estadístico son casi equivalentes, diferenciándose únicamente en el conjunto de datos del cual se obtienen. Un parámetro se calcula a partir de los datos de una población y representa una característica inherente a ella, mientras que un estadístico se calcula a partir de los datos de una muestra y sirve como una estimación o aproximación del parámetro poblacional.
+
+**Ejemplo.** El promedio muestral y el promedio poblacional de una población finita son ejemplos clásicos de un estadístico y un parámetro, respectivamente. Suponga que \( X \) representa una característica medible de interés y que \( x_i \) denota el valor de \( X \) asociado al \( i \)-ésimo individuo. El **promedio muestral** de \( X \), denotado con \( \bar{x} \), se define como:
+\[
+\bar{x} = \frac{x_1 + x_2 + \ldots + x_n}{n} = \frac{1}{n} \sum_{i=1}^{n} x_i,
+\]
+donde \( n \) es el tamaño de la muestra. 
+De manera similar, el \textbf{promedio poblacional} de \( X \), denotado con \( \mu \), se define como:
+\[
+\mu = \frac{x_1 + x_2 + \ldots + x_N}{N} = \frac{1}{N} \sum_{i=1}^{N} x_i,
+\]
+donde \( N \) representa el tamaño total de la población. $\square$
+
+# Variables
+
+Las variables son la base fundamental de toda investigación estadística. El primer paso en cualquier estudio es delimitar claramente la cuestión a investigar, ya que esto permite identificar las variables clave que serán objeto de análisis en el estudio.
+
+**Definición.** Una **variable** es una característica observable o medible de un individuo, que se define con base en una escala de medición específica. $\square$
+
+Algunos ejemplos de variables incluyen características como la edad, el género, la raza, la nacionalidad, la estatura, el peso, el ingreso, el número de nacimientos, la tasa de suicidios, el producto interno bruto, entre otras. Estas variables pueden describir aspectos demográficos, sociales, económicos o físicos, dependiendo del contexto del estudio.
+
+Las variables se clasifican según su naturaleza en dos tipos principales: cualitativas y cuantitativas. Las **variables cualitativas** son aquellas que se describen mediante categorías o atributos en forma verbal, y no están asociadas con valores numéricos. Ejemplos comunes incluyen el género, la raza, la afiliación política, la nacionalidad y la profesión.
+
+Las **variables cuantitativas** son aquellas que se registran o expresan en forma numérica. Ejemplos comunes incluyen la edad, el peso, la estatura, el ingreso y la temperatura. Estas variables, a su vez, se dividen en dos categorías principales:
+
+- **Variables discretas**: Son aquellas que no admiten necesariamente valores intermedios entre dos valores cualesquiera de la variable. Por ejemplo, el número de hijos de una persona es una variable cuantitativa discreta, ya que solo puede tomar valores enteros.
+- **Variables continuas**: Son aquellas que siempre admiten valores intermedios entre dos valores cualesquiera de la variable. Por ejemplo, el salario de un empleado medido en millones de pesos es una variable cuantitativa continua, ya que puede tomar cualquier valor dentro de un rango dado.
+
+Esta clasificación permite distinguir entre variables que representan conteos y aquellas que representan mediciones en una escala continua.
+
+
+En algunas ocasiones, por simplicidad o conveniencia, las variables cuantitativas pueden transformarse en variables cualitativas. Por ejemplo, las calificaciones de los estudiantes, originalmente medidas en una escala numérica de 0 a 5, pueden **categorizase** y expresarse como una variable cualitativa. Para ello, el investigador puede agrupar las calificaciones dentro de rangos específicos y asignarles etiquetas descriptivas, como "deficiente", "regular", "bueno" y "excelente". Este enfoque facilita el análisis e interpretación de los datos, especialmente cuando el objetivo es comparar o comunicar resultados de manera más intuitiva.
+
+**Ejemplo.** 
+Una empresa de consultoría está diseñando dos formularios con el objetivo de recopilar información que satisfaga las necesidades de dos clientes interesados en un grupo específico de compañías.
+
+El primer formulario tiene como propósito evaluar el estado actual de las empresas de exportación en comparación con el año pasado. Las variables de interés incluyen el sector industrial, una variable cualitativa nominal, y el número de empleados actuales, una variable cuantitativa discreta.
+
+El segundo formulario busca identificar sectores industriales en crecimiento constante y proyectar su horizonte financiero. Las variables de interés incluyen el número de clientes nuevos respecto al mes anterior, una variable cuantitativa discreta, y el porcentaje de aumento en la producción respecto al mes anterior, una variable cuantitativa continua.
+
+La frecuencia de diligenciamiento varía según los objetivos de cada formulario. El primer formulario está diseñado para comparar datos actuales con los del año pasado, por lo que se utiliza una sola vez en un momento específico (**estudio transversal**). En cambio, el segundo formulario tiene como objetivo identificar tendencias a lo largo del tiempo, lo que exige diligenciarlo de manera periódica para registrar cambios y proyectar escenarios futuros (**estudio longitudinal**). $\square$
+
+# Medición
+
+La medición es un componente fundamental en estadística, ya que permite obtener información precisa y concreta sobre características medibles de un fenómeno, asegurando la validez y confiabilidad de los datos. Al proporcionar datos claros y objetivos, la medición respalda la formulación de juicios acertados y conclusiones fundamentadas, lo que resulta crucial para el éxito de cualquier investigación.
+
+**Definición.** La **medición** es el proceso mediante el cual se asignan valores cuantitativos o cualitativos a los atributos de los elementos bajo estudio, siguiendo reglas claras y previamente definidas que garantizan consistencia y precisión en la representación de dichas características.
+
+**Definición.** Una **escala de medición** es un esquema estructurado que establece cómo asignar símbolos o números para representar los valores de una variable, permitiendo así describir, clasificar o cuantificar las características de los elementos estudiados de manera sistemática.
+
+La taxonomía más conocida sobre las escalas de medición la presenta [@stevens1951], quien las clasifica en nominales, ordinales, de intervalos y de razón:
+
+- La **escala nominal** clasifica individuos en categorías distintas basadas en cualidades específicas. Los números pueden usarse para identificar categorías, pero no representan magnitudes ni jerarquías. Por ejemplo, asignar 1 al género masculino y 2 al femenino facilita el manejo de datos, pero no implica un valor mayor o menor. En esta escala, los números no se emplean en operaciones aritméticas, ya que su propósito es únicamente identificar. La escala nominal es limitada, ya que permite clasificar pero no medir magnitudes.
+- La **escala ordinal** clasifica las unidades de observación según su posición en relación con un atributo, sin reflejar la distancia entre estas posiciones. Los números asignados solo indican el orden relativo. Por ejemplo, al evaluar tres alternativas para una campaña de mercadeo (A, B y C), una junta directiva puede decidir que A es la mejor y B la peor. Aunque esto ordena las alternativas según su conveniencia, no permite determinar cuánto mejor es A respecto a las otras. En una escala ordinal, las operaciones aritméticas no son válidas, ya que las diferencias entre los elementos no están medidas en unidades absolutas ni comparables.
+- La **escala de intervalo** organiza los elementos según la magnitud del atributo que representan, garantizando intervalos iguales entre las unidades de medida. No cuenta con un cero absoluto, ya que este se define de manera arbitraria y no representa la ausencia del atributo. Por ejemplo, en la escala de temperatura en grados centígrados, un valor de 0 no implica ausencia de temperatura, sino que corresponde a un punto de referencia establecido por convención. Además, una diferencia de magnitud en esta escala tiene el mismo significado en cualquier rango. Por ejemplo, la diferencia entre 1°C y 2°C es equivalente a la diferencia entre 101°C y 102°C.
+- La **escala de razón** se distingue por contar con un punto cero absoluto, que indica la ausencia total de la característica medida. Un ejemplo es una regla de 10 centímetros, que utiliza una escala de razón al dividirse en 10 unidades iguales desde un cero verdadero. Este tipo de escala es común en variables relacionadas con aspectos fisiológicos y tareas motoras. Ejemplos clásicos incluyen la medición de estatura y peso, donde el valor cero significa la ausencia total de la característica. Además, su naturaleza permite establecer relaciones proporcionales de forma directa; por ejemplo, un objeto que pesa 20 kg tiene el doble de peso que otro de 10 kg.
+
+# La investigación estadística
+
+En esta sección se presenta el esquema de una investigación estadística, comúnmente conocido como el **ciclo de la ciencia de datos**. Este ciclo describe el proceso sistemático que permite transformar datos en conocimiento útil y en decisiones fundamentadas. Aunque los pasos específicos pueden variar según el enfoque o la metodología adoptada, generalmente abarca las siguientes etapas:
+
+1. La **definición del problema** consiste en clarificar los objetivos del análisis y formular las preguntas que se desean responder. Implica identificar con precisión las variables y métricas clave necesarias para abordar el problema de manera eficiente y garantizar que el análisis esté alineado con los objetivos planteados.
+   
+2. La **obtención de datos** consiste en recopilar información relevante de diversas fuentes internas o externas, como bases de datos, sensores, encuestas o APIs (*Application Programming Interfaces*). Es fundamental verificar la relevancia y accesibilidad de los datos para garantizar su idoneidad y calidad antes de proceder con el análisis.
+
+3. La **preparación de datos** incluye tareas fundamentales como la limpieza, que se enfoca en corregir valores faltantes, inconsistencias y errores; la transformación, que ajusta formatos, codifica variables y aplica normalización o escalamiento según sea necesario; y la integración, que combina datos de diversas fuentes para asegurar su coherencia y adecuación antes del análisis.
+
+4. El **análisis exploratorio de datos** (*exploratory data analysis*, EDA) es fundamental para identificar patrones, tendencias y relaciones clave en el conjunto de datos. Este proceso se complementa con la visualización a través de gráficos y resúmenes estadísticos, lo que permite comprender de manera más clara la estructura y las características principales de los datos.
+
+5. El **modelamiento de datos** implica seleccionar y entrenar modelos estadísticos o de aprendizaje automático (*machine learning*) que sean adecuados para resolver el problema planteado. Una vez *entrenado*, se evalúa el rendimiento del modelo utilizando métricas apropiadas, y si es necesario, se ajustan las condiciones iniciales del modelo para optimizar su desempeño.
+
+6. La **validación de modelos** implica probarlos con datos distintos a los utilizados durante el *entrenamiento*, con el objetivo de evaluar su capacidad de generalización. Este proceso garantiza que los resultados sean sólidos y confiables, al tiempo que previene el *sobreajuste* a los datos originales.
+
+7. La **comunicación de resultados** implica presentar los hallazgos a las partes interesadas de manera clara y accesible, empleando visualizaciones, informes y narrativas efectivas. Es crucial contextualizar los resultados en función del problema definido inicialmente, resaltando su importancia y las implicaciones que puedan tener para la toma de decisiones.
+
+8. La **producción de modelos** consiste en integrar los modelos en sistemas operativos o de toma de decisiones para su aplicación práctica. Una vez implementados, es fundamental monitorear su rendimiento de manera continua para asegurar su eficacia y adaptabilidad frente a posibles cambios en el entorno o en los datos utilizados.
+
+9. El **mantenimiento de modelos** consiste en actualizarlos o repetir el ciclo cuando se disponga de nuevos datos o se produzcan cambios en las condiciones del problema. También es fundamental revisar periódicamente el enfoque del modelo para garantizar su relevancia y mantener su eficacia en el tiempo.
+   
+Este ciclo es iterativo, ya que los hallazgos pueden llevar a redefinir el problema, recolectar más datos o ajustar los modelos. Su naturaleza cíclica asegura que las soluciones estén alineadas con los objetivos y evolucionen con el contexto.
+
+
+# Referencias
