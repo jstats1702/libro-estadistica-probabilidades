@@ -1,0 +1,334 @@
+---
+title: "Tablas"
+author:
+  - Juan Sosa
+  - jcsosam@unal.edu.co
+  - https://github.com/jstats1702
+  - 
+date: ""
+output:
+  bookdown::html_document2:
+    number_sections: yes
+    highlight: tango
+    theme: cosmo
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+    keep_md: true
+bibliography: referencias.bib
+csl: apa-5th-edition.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introducción
+
+La exploración de datos es una etapa fundamental en el análisis de datos, ya que permite resumir la información de las variables de manera clara y precisa. Este proceso se apoya en tablas y gráficos que destacan el comportamiento de las variables de forma comprensible. Una de las aplicaciones más importantes de esta etapa es la depuración de datos, que implica la identificación de anomalías en la estructura de los datos para su posterior corrección o eliminación. 
+
+Entre las anomalías más frecuentes se encuentran los datos faltantes, pérdidas de formato, errores de digitación y valores improbables. Sin embargo, la exploración de datos trasciende la depuración, ya que también facilita la identificación de tendencias en los datos analizados y el estudio de interacciones entre las variables, proporcionando una base de datos sólida para el modelamiento.
+
+# Distribución de frecuencias
+
+Considere un conjunto de \( n \) individuos asociados a una variable cuyos valores han sido agrupados en \( k \) clases o categorías, denotadas con \( C_1, C_2, \ldots, C_k \). Para cada una de estas \( k \) clases se definen las siguientes magnitudes:
+
+**Definición.** La **frecuencia absoluta** de la clase \( C_i \), denotar con \( n_i \), representa el número de observaciones que pertenecen a la \( i \)-ésima categoría, para \( i = 1, \ldots, k \). $\square$
+
+**Definición.** La **frecuencia relativa** de la clase \( C_i \), denotar con \( f_i \), es la proporción de la frecuencia absoluta de la \( i \)-ésima categoría con respecto al total de observaciones. Se calcula como $f_i = \frac{n_i}{n}$, para \( i = 1, \ldots, k \). $\square$
+
+Al multiplicar la fórmula de la frecuencia relativa \( f_i \) por 100\%, se obtiene el porcentaje de individuos pertenecientes a la clase correspondiente.
+
+**Definición.** La **frecuencia absoluta acumulada** de la clase \( C_i \), denotar con \( N_i \), representa la cantidad de individuos cuya modalidad es menor o igual a la \( i \)-ésima categoría. Se calcula como $N_i = \sum_{j=1}^{i} n_j$, para \( i = 1, \ldots, k \). $\square$
+
+**Definición.** La **frecuencia relativa acumulada** de la clase \( C_i \), denotar con \( F_i \), representa la proporción de individuos, respecto al total de observaciones, cuya modalidad es menor o igual a la \( i \)-ésima categoría. Se calcula como $F_i = \frac{N_i}{n}$, para \( i = 1, \ldots, k \). $\square$
+
+Las frecuencias acumuladas se calculan para variables en escalas de al menos nivel ordinal, ya que permiten establecer un orden entre las categorías. En variables nominales, las frecuencias acumuladas carecen de sentido interpretativo, pues no existe un orden lógico entre las clases.
+
+La **distribución de frecuencias** es una tabla que muestra las categorías de una variable junto con sus frecuencias correspondientes. Este tipo de tabla organiza los datos de manera clara y estructurada, facilitando su interpretación y análisis. Su formato general se ilustra en la siguiente tabla.
+
+```{r tabla-frecuencias, echo=FALSE}
+suppressMessages(suppressWarnings(library(knitr)))
+
+# Crear la tabla
+tabla <- data.frame(
+  `C_i` = c("$C_1$", "$C_2$", "$\\vdots$", "$C_k$", "Total"),
+  `n_i` = c("$n_1$", "$n_2$", "$\\vdots$", "$n_k$", "$n$"),
+  `f_i` = c("$f_1$", "$f_2$", "$\\vdots$", "$f_k$", "1"),
+  `N_i` = c("$N_1$", "$N_2$", "$\\vdots$", "$n$", "N.A."),
+  `F_i` = c("$F_1$", "$F_2$", "$\\vdots$", "1", "N.A.")
+)
+
+# Mostrar la tabla con kable
+kable(
+  tabla, 
+  align = "c", 
+  col.names = c("$C_i$", "$n_i$", "$f_i$", "$N_i$", "$F_i$")
+)
+```
+
+**Proposición.** En una distribución de frecuencias con una variable categórica de \( k \) clases, se cumplen las siguientes propiedades fundamentales:  
+
+1. La suma de las frecuencias relativas es igual a 1: \( \sum_{i=1}^k f_i = 1 \).  
+2. La frecuencia absoluta acumulada de la última clase es igual al total de observaciones: \( N_k = n \).  
+3. La frecuencia relativa acumulada de una clase se obtiene como la suma de las frecuencias relativas hasta esa clase: \( F_i = \sum_{j=1}^{i} f_j \).  
+4. La frecuencia relativa acumulada de la última clase es igual a 1: \( F_k = 1 \).  
+
+La demostración se deja como ejercicio para el lector. $\square$
+
+# Tablas para variables cualitativas
+
+A continuación, se presentan algunos ejemplos para resumir los datos asociados con variables cualitativas. Al elaborar las tablas correspondientes, es esencial considerar la escala de medición de las variables para determinar la pertinencia de incluir las frecuencias acumuladas.
+
+**Ejemplo.** Considere el siguiente conjunto de datos obtenido a partir de una encuesta de opinión sobre una medida económica (0 = En contra; 1 = A favor; 2 = No Sabe/No Responde). A partir de estos datos, elabore la tabla de frecuencias correspondiente.
+
+```{r}
+# datos
+x <- c(1, 0, 0, 1, 1, 2, 1, 2, 1, 2, 0, 0, 0, 2, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 
+       0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 2, 1)
+```
+
+```{r}
+# tamaño de la muestra
+n <- length(x)
+print(n)
+```
+
+```{r}
+# frecuencias absolutas
+n_i <- table(x)
+print(n_i)
+```
+
+```{r}
+# frecuencias relativas (%)
+f_i <- 100*n_i/n
+print(f_i)
+```
+
+```{r}
+# número de clases
+k <- length(n_i)
+print(k)
+```
+
+La variable "opinión" es una variable cualitativa nominal que puede tomar los valores "A favor", "En contra" y "NS/NR", por lo que el número de clases es $k = 3$. La siguiente tabla presenta la distribución de frecuencias solicitada. Dado que la escala de medición de la variable "opinión" es nominal, las frecuencias acumuladas no tienen sentido en este contexto.
+
+```{r tabla-frecuencias-ejemplo-1, echo=FALSE}
+suppressMessages(suppressWarnings(library(knitr)))
+
+# Crear la tabla
+tabla <- data.frame(
+  `Opinión` = c("A favor", "En contra", "NS/NR", "Total"),
+  `F. Absoluta` = c(n_i, n),
+  `F. Relativa (%)` = c(f_i, 100)
+)
+
+# Mostrar la tabla con kable
+kable(
+  tabla, 
+  align = c("l", "c", "c"), 
+  col.names = c("Opinión", "F. Absoluta", "F. Relativa (%)"), 
+  row.names = FALSE, 
+  digits = c(0, 0, 1)
+)
+```
+
+$\square$
+
+**Ejemplo.** Considere el siguiente conjunto de datos relacionado con el nivel educativo de algunos empleados de una empresa (0 = Bachillerato, 1 = Pregrado, 2 = Maestría, 3 = Doctorado). A partir de estos datos, elabore la tabla de frecuencias correspondiente.
+
+```{r}
+# datos
+x <- c(0, 3, 2, 0, 0, 1, 0, 2, 0, 0, 0, 1, 0, 2, 0, 0, 2, 0, 2, 0, 0, 0, 0, 0, 
+       0, 0, 1, 0, 0, 0, 0, 2, 0, 1, 0, 0, 2, 0, 0, 0, 3, 0, 2, 0, 1, 0, 0, 0, 
+       1, 1, 3, 1, 0, 0, 1, 1, 2, 2, 0, 0, 1, 0, 2, 1, 0, 0, 0, 1, 1, 3, 2, 1)
+```
+
+```{r}
+# tamaño de la muestra
+n <- length(x)
+print(n)
+```
+
+```{r}
+# frecuencias absolutas
+n_i <- table(x)
+print(n_i)
+```
+
+```{r}
+# frecuencias absolutas acumuladas
+N_i <- cumsum(n_i)
+print(N_i)
+```
+
+```{r}
+# frecuencias relativas (%)
+f_i <- 100*n_i/n
+print(f_i)
+```
+
+```{r}
+# frecuencias relativas acumuladas (%)
+F_i <- 100*N_i/n
+print(F_i)
+```
+
+```{r}
+# número de clases
+k <- length(n_i)
+print(k)
+```
+
+La variable "nivel educativo" es una variable cualitativa ordinal que toma los valores "Bachillerato", "Pregrado", "Maestría" y "Doctorado", por lo que el número de categorías es $k=4$. La siguiente tabla muestra la distribución de frecuencias requerida. Dado que la escala de medición de la variable es ordinal, resulta pertinente incluir las frecuencias acumuladas.
+
+```{r tabla-frecuencias-ejemplo-2, echo=FALSE}
+suppressMessages(suppressWarnings(library(knitr)))
+
+# Crear la tabla
+tabla <- data.frame(
+  `Nivel` = c("Bachillerato", "Pregrado", "Maestría", "Doctorado", "Total"),
+  `F. Absoluta` = c(n_i, n),
+  `F. Relativa (%)` = c(f_i, 100),
+  `F. Abs. Acumulada` = c(N_i, NA),
+  `F. Rel. Acumulada (%)` = c(F_i, NA)
+)
+
+# Mostrar la tabla con kable
+kable(
+  tabla, 
+  align = c("l", "c", "c", "c", "c"), 
+  col.names = c("Nivel", "F. Absoluta", "F. Relativa (%)", "F. Abs. Acumulada", "F. Rel. Acumulada (%)"), 
+  row.names = FALSE, 
+  digits = c(0, 0, 1, 0, 1)
+)
+```
+
+$\square$
+
+# Tablas para variables cuantitativas
+
+Cuando una variable es cuantitativa de razón, no se cuenta directamente con $k$ clases para elaborar la distribución de frecuencias. A continuación, se describe un procedimiento para crear las categorías en este tipo de variables:
+
+1. **Seleccionar el número de categorías $k$**. Se pueden utilizar las siguientes alternativas:  
+   - Elegir arbitrariamente un valor de $k$ tal que $5 \leq k \leq 16$.  
+   - Calcular $k$ mediante la fórmula $k \approx \sqrt{n}$.  
+   - Calcular $k$ utilizando la fórmula de la **regla de Sturges**: $k \approx 1 + 3.3 \log_{10}(n)$.
+   Los resultados de estas alternativas pueden diferir, por lo que el analista debe decidir cuántas clases utilizar según convenga.
+
+2. **Determinar el mínimo y el máximo**. El mínimo y el máximo del conjunto de datos se denotan con $x_{\min}$ y $x_{\max}$, respectivamente.
+
+3. **Calcular el rango $R$**. El rango o recorrido del conjunto de datos se define como: $R = x_{\max} - x_{\min}$.
+
+4. **Calcular la amplitud $A$**. La amplitud representa el tamaño de las clases y se define como: $A = R/k$. Para mayor simplicidad, se recomienda que todas las clases tengan la misma amplitud.
+
+5. **Establecer las categorías**. Las categorías se construyen de la siguiente manera:  
+   \[
+   C_i = \{x : l_{i-1} \leq x < l_i\},
+   \]  
+   donde $l_0 = x_{\min}$ y $l_i = l_{i-1} + a$. Esto se repite para $i = 1, \ldots, k$. 
+
+Este procedimiento asegura una partición adecuada de los valores de la variable en clases uniformes y facilita la elaboración de la tabla de distribución de frecuencias.
+
+**Ejemplo.** Considere el siguiente conjunto de datos correspondiente al peso (en kg) de muestra de materiales. A partir de estos datos, elabore la tabla de distribución de frecuencias correspondiente.
+
+```{r}
+# datos
+x <- c(103.1, 82.1, 106.2, 100.9, 91.8,  96.1,  126.9, 119.8, 93.1,  86.8,  75.2, 
+       93.0,  82.3,  94.8,  64.2, 105.3, 108.0, 86.3,  81.8,  138.1, 92.5,  66.3, 
+       66.6, 142.2,  96.5,  74.8, 95.4,  100.1, 81.9,  112.0, 116.8, 103.2, 66.1,  
+       60.4,  78.7)
+```
+
+```{r}
+# tamaño de la muestra
+n <- length(x)
+print(n)
+```
+
+```{r}
+# número de clases (regla de Sturges)
+k <- round(1 + 3.3*log(n, base = 10))
+print(k)
+```
+
+```{r}
+# mínimo
+x_min <- min(x)
+print(x_min)
+```
+
+```{r}
+# máximo
+x_max <- max(x)
+print(x_max)
+```
+
+```{r}
+# rango
+R <- x_max - x_min
+print(R)
+```
+
+```{r}
+# amplitud
+A <- R/k
+print(A)
+```
+
+```{r}
+# límites
+limites <- x_min + (0:k)*A
+print(limites)
+```
+
+```{r}
+# frecuencias absolutas
+n_i <- table(cut(x, breaks = limites, include.lowest = TRUE))
+print(n_i)
+```
+
+```{r}
+# frecuencias absolutas acumuladas
+N_i <- cumsum(n_i)
+print(N_i)
+```
+
+```{r}
+# frecuencias relativas (%)
+f_i <- 100*n_i/n
+print(f_i)
+```
+
+```{r}
+# frecuencias relativas acumuladas (%)
+F_i <- 100*N_i/n
+print(F_i)
+```
+
+La variable "peso" es cuantitativa de razón y no se encuentra inicialmente agrupada en categorías, por lo que es necesario definir las clases. La siguiente tabla presenta la distribución de frecuencias correspondiente. Dado que las ganancias están medidas en una escala de razón, resulta pertinente incluir las frecuencias acumuladas. 
+
+```{r tabla-frecuencias-ejemplo-3, echo=FALSE}
+suppressMessages(suppressWarnings(library(knitr)))
+
+# Crear la tabla
+tabla <- data.frame(
+  `Nivel` = c("[60.4,74]", "(74,87.7]", "(87.7,101]", "(101,115]", "(115,129]", "(129,142]", "Total"),
+  `F. Absoluta` = c(n_i, n),
+  `F. Relativa (%)` = c(f_i, 100),
+  `F. Abs. Acumulada` = c(N_i, NA),
+  `F. Rel. Acumulada (%)` = c(F_i, NA)
+)
+
+# Mostrar la tabla con kable
+kable(
+  tabla, 
+  align = c("l", "c", "c", "c", "c"), 
+  col.names = c("Nivel", "F. Absoluta", "F. Relativa (%)", "F. Abs. Acumulada", "F. Rel. Acumulada (%)"), 
+  row.names = FALSE, 
+  digits = c(0, 0, 1, 0, 1)
+)
+```
+
+$\square$
